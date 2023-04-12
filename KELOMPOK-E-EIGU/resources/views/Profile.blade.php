@@ -1,6 +1,7 @@
 @extends('Layout.Home_Layout')
 
 @section('konten')
+
     <section id="Profile">
         <div class="container my-5">
             <div class="row">
