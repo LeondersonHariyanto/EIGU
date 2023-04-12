@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class SignUpController extends Controller
 {
@@ -12,6 +11,7 @@ class SignUpController extends Controller
     {
         return view('Sign_Up');
     }
+    
 
     public function signup(Request $request)
     {
@@ -27,7 +27,7 @@ class SignUpController extends Controller
 
         $user->firstname = $nama;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        $user->password = $request->password;
         $user->save();
 
         return redirect('/login');
