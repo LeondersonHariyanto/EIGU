@@ -11,6 +11,7 @@ class SignUpController extends Controller
     {
         return view('Sign_Up');
     }
+    
 
     public function signup(Request $request)
     {
