@@ -27,9 +27,9 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-abu">
+    <nav class="navbar navbar-expand-lg navbar-light bg-abu sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="{{ asset('src/img/Logo.png') }}" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -50,7 +50,7 @@
                 </form>
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item px-3 text-center">
-                        <a class="navbar-link active" aria-current="page" href="#">
+                        <a class="navbar-link active" aria-current="page" href="/">
                             <i class="fs-5 bi bi-house"></i><br>Home
                         </a>
                     </li>
