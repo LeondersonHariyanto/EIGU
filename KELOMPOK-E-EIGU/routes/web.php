@@ -57,7 +57,7 @@ Route::get('/network',[NetworkController::class, 'index']);
 Route::get('/profile/{id}',[NetworkController::class, 'detail']);
 
 
-Route::get('/messaging/admin',[PesanController::class, 'index'])->middleware('auth');
+Route::get('/messaging/admin',[PesanController::class, 'index'])->middleware('auth'); 
 Route::get('/messaging/user/{id}',[PesanController::class, 'user'])->middleware('auth');
 Route::post('/admin/send',[PesanController::class, 'toadmin'])->middleware('auth');
 Route::post('/user/send/{id}',[PesanController::class, 'touser'])->middleware('auth');
