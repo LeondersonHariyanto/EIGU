@@ -22,4 +22,4 @@ class KoneksiController extends Controller
 
 
     }
-}
+} 
