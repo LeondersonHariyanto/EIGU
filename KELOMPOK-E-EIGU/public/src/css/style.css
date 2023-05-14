@@ -155,6 +155,22 @@ body {
     width: 300px;
 }
 
-.button-tambah{
-    height: 300px;
+.tombol:hover{
+    background-color: #1363DF;
+    color: #ffffff;
+}
+
+.icon{
+    width: 50px;
+}
+
+.chat-box{
+    height: 600px;
+}
+.chat-icon{
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 100%;
 }

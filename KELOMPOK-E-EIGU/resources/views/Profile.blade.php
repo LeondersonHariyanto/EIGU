@@ -1,7 +1,6 @@
 @extends('Layout.Home_Layout')
 
 @section('konten')
-
     <section id="Profile">
         <div class="container my-5">
             <div class="row">
@@ -18,15 +17,29 @@
                             <img src="{{ asset('src/img/contoh.jpg') }}" class="pics" alt="">
                         </div>
                         <div class="card-body text-start px-4">
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col" style="padding-top: 80px">
-                                    <h3 class="display-5 card-title">{{ auth()->user()->firstname.' '.auth()->user()->lastname }} <b
+                                    <h3 class="display-5 card-title">
+                                        {{ auth()->user()->firstname . ' ' . auth()->user()->lastname }} <b
                                             class="text-sm fw-light text-secondary">(He/Him)</b> </h3>
                                     <p class="card-text"><b>Front End Developer</b></p>
-                                    <b class="fw-light text-sm text-secondary">{{ auth()->user()->city.', '.auth()->user()->region }}</b> <a href="#"
-                                        class="text-decoration-none">Contact Information</a><br>
+                                    <b
+                                        class="fw-light text-sm text-secondary">{{ auth()->user()->city . ', ' . auth()->user()->region }}</b>
+                                    <a href="#" class="text-decoration-none">Contact Information</a><br>
                                     <p><a href="#" class="text-decoration-none mb-3">5.802 Connection</a></p>
-                                    <a href="#" class="btn bg-abu round">+ Add Account</a>
+                                    @if ($integration->dribbble != 'None')
+                                        <a href="https://dribbble.com/{{ $integration->dribbble }}" target="_blank"
+                                            class="btn btn-primary round"><img src="{{ asset('src/img/dribbble.png') }}" alt="" width="20"> Dribbble</a>
+                                    @endif
+                                    @if ($integration->behance != 'None')
+                                        <a href="https://www.behance.net/{{ $integration->behance }}" target="_blank"
+                                            class="btn btn-primary round"><img src="{{ asset('src/img/behance.png') }}" alt="" width="20">Behance</a>
+                                    @endif
+                                    @if ($integration->github != 'None')
+                                    <a href="https://github.com/{{ $integration->github }}" target="_blank"
+                                        class="btn btn-primary round"><img src="{{ asset('src/img/github.png') }}" alt="" width="20">Github</a>
+                                @endif
+                                    <a href="/settings/integration" class="btn bg-abu round">+ Add Account</a>
                                 </div>
                                 <div class="col text-end">
                                     <div class="portofolio mb-3">
@@ -39,6 +52,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col mx-2 p-2 border round">
                                     <h1 class="fs-6">Role-appropriate work recommendations</h1>
@@ -51,8 +65,10 @@
                                     <a href="#" class="text-decoration-none">See more</a>
                                 </div>
                             </div>
+
                         </div>
                     </div>
+
                     <div class="posting bg-white p-3 round">
                         <h3 class="display-6 mb-2">Activity</h3>
                         <div class="col border round p-3">
@@ -85,6 +101,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-3">
                     <div class="card round">
                         <ul class="list-group list-group-flush round">
@@ -110,6 +127,8 @@
 
             </div>
         </div>
+
+
         <!-- Modal -->
         <div class="modal fade" id="UpdateProfile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="UpdateProfileLabel" aria-hidden="true">
