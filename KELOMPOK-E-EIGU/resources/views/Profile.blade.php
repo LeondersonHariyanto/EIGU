@@ -43,7 +43,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="col mx-2 p-2 border round">
                                     <h1 class="fs-6">Role-appropriate work recommendations</h1>
@@ -56,10 +55,8 @@
                                     <a href="#" class="text-decoration-none">See more</a>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                     <div class="posting bg-white p-3 round">
                         <h3 class="display-6 mb-2">Activity</h3>
                         <div class="col border round p-3">
@@ -92,7 +89,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-3">
                     <div class="card round">
                         <ul class="list-group list-group-flush round">
@@ -118,8 +114,6 @@
 
             </div>
         </div>
-
-
         <!-- Modal -->
         <div class="modal fade" id="UpdateProfile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="UpdateProfileLabel" aria-hidden="true">
