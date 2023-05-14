@@ -21,6 +21,7 @@
     <!-- Bootsrap Icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
+
     <title>EIGU</title>
 </head>
 
@@ -50,22 +51,26 @@
                 </form>
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item px-3 text-center">
-                        <a class="navbar-link active" aria-current="page" href="/">
+                        <a class="navbar-link {{ Request::is('/') ? 'active' : '' }}" aria-current="page"
+                            href="/">
                             <i class="fs-5 bi bi-house"></i><br>Home
                         </a>
                     </li>
                     <li class="nav-item px-3 text-center">
-                        <a class="navbar-link" aria-current="page" href="#">
+                        <a class="navbar-link {{ Request::is('network*') ? 'active' : '' }}"" aria-current="page"
+                            href="#">
                             <i class="fs-5 bi bi-people"></i><br>Network
                         </a>
                     </li>
                     <li class="nav-item px-3 text-center">
-                        <a class="navbar-link" aria-current="page" href="#">
+                        <a class="navbar-link {{ Request::is('pekerjaan*') ? 'active' : '' }}"" aria-current="page"
+                            href="/pekerjaan">
                             <i class="fs-5 bi bi-bag"></i><br>Job
                         </a>
                     </li>
                     <li class="nav-item px-3 text-center">
-                        <a class="navbar-link" aria-current="page" href="#">
+                        <a class="navbar-link {{ Request::is('messaging*') ? 'active' : '' }}"" aria-current="page"
+                            href="/messaging/admin">
                             <i class="fs-5 bi bi-send"></i><br>Messaging
                         </a>
                     </li>
@@ -85,6 +90,12 @@
     </nav>
 
     @yield('konten')
+
+    <nav class="navbar fixed-bottom">
+        <div class="w-100 text-end m-5 p-5">
+            <img src="{{ asset('src/img/bell.png') }}" alt="" width="100">
+        </div>
+    </nav>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
