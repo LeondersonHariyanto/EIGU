@@ -10,9 +10,4 @@ class SettingsController extends Controller
     {
         return view('Settings_Privacy');
     }
-
-    public function security()
-    {
-        return view('Settings_Security');
-    }
 }
