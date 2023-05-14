@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Integration;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -10,8 +9,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $integration = Integration::where('user_id','=',auth()->user()->id)->first();
-        return view('Profile', compact('integration'));
+        return view('Profile');
     }
 
     public function update(Request $request)

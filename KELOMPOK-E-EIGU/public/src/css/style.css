@@ -155,7 +155,6 @@ body {
     width: 300px;
 }
 
-.tombol:hover{
-    background-color: #1363DF;
-    color: #ffffff;
+.button-tambah{
+    height: 300px;
 }
