@@ -28,16 +28,10 @@
                                     <a href="#" class="text-decoration-none">Contact Information</a><br>
                                     <p><a href="#" class="text-decoration-none mb-3">5.802 Connection</a></p>
                                     @if ($integration->dribbble != 'None')
-                                        <a href="https://dribbble.com/{{ $integration->dribbble }}" target="_blank"
-                                            class="btn btn-primary round"><img src="{{ asset('src/img/dribbble.png') }}" alt="" width="20"> Dribbble</a>
+                                        <a href="https://dribbble.com/{{ $integration->dribbble }}" target="_blank" class="btn bg-abu round">+ Add Account</a>
                                     @endif
                                     @if ($integration->behance != 'None')
-                                        <a href="https://www.behance.net/{{ $integration->behance }}" target="_blank"
-                                            class="btn btn-primary round"><img src="{{ asset('src/img/behance.png') }}" alt="" width="20">Behance</a>
-                                    @endif
-                                    @if ($integration->github != 'None')
-                                    <a href="https://github.com/{{ $integration->github }}" target="_blank"
-                                        class="btn btn-primary round"><img src="{{ asset('src/img/github.png') }}" alt="" width="20">Github</a>
+                                    <a href="https://www.behance.net/{{ $integration->behance }}" target="_blank" class="btn bg-abu round">+ Add Account</a>
                                 @endif
                                     <a href="/settings/integration" class="btn bg-abu round">+ Add Account</a>
                                 </div>
