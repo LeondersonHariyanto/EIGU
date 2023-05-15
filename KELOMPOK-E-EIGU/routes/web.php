@@ -5,10 +5,12 @@ use App\Http\Controllers\IntegrationController;
 use App\Http\Controllers\KoneksiController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\NetworkController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SignUpController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +49,10 @@ Route::post('/portofolio',[PortofolioController::class, 'portofolio'])->middlewa
 
 Route::get('/pekerjaan',[PekerjaanController::class, 'index']);
 
+Route::get('/network',[NetworkController::class, 'index']);
+Route::get('/profile/{id}',[NetworkController::class, 'detail']);
+
+
 Route::get('/messaging/admin',[PesanController::class, 'index'])->middleware('auth');
 Route::get('/messaging/user/{id}',[PesanController::class, 'user'])->middleware('auth');
 Route::post('/admin/send',[PesanController::class, 'toadmin'])->middleware('auth');
@@ -60,3 +66,6 @@ Route::post('/integration/behance', [IntegrationController::class, 'behance'])->
 Route::get('/integration/behance/uncheck', [IntegrationController::class, 'behanceuncheck'])->middleware('auth');
 Route::post('/integration/github', [IntegrationController::class, 'github'])->middleware('auth');
 Route::get('/integration/github/uncheck', [IntegrationController::class, 'githubuncheck'])->middleware('auth');
+
+Route::get('/settings/privacy',[SettingsController::class, 'privacy'])->middleware('auth');
+Route::get('/settings/security',[SettingsController::class, 'security'])->middleware('auth');
