@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pesans', function (Blueprint $table) {
+        Schema::create('postingans', function (Blueprint $table) {
             $table->id();
-            $table->integer('pengirim_id');
-            $table->text('penerima');
-            $table->integer('penerima_id')->nullable();
-            $table->text('isi');
+            $table->integer('user_id');
+            $table->text('postingan');
+            $table->text('foto')->nullable();
+            $table->text('video')->nullable();
+            $table->text('thread')->nullable();
+            $table->text('schedule')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pesans');
+        Schema::dropIfExists('postingans');
     }
 };

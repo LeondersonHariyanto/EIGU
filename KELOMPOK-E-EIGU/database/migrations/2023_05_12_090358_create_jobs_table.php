@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pesans', function (Blueprint $table) {
+        Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->integer('pengirim_id');
-            $table->text('penerima');
-            $table->integer('penerima_id')->nullable();
-            $table->text('isi');
+            $table->string('title');
+            $table->string('company');
+            $table->string('logo');
+            $table->date('startdate');
+            $table->date('enddate');
+            $table->string('link');
+            $table->text('deskripsi');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pesans');
+        Schema::dropIfExists('jobs');
     }
 };
