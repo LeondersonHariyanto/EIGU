@@ -1,4 +1,4 @@
-@extends('Layout.Home_Layout')
+@extends('Layout.Home_Layout') 
 
 @section('konten')
     <section id="Pesan">

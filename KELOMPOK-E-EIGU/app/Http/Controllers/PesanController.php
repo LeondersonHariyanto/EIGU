@@ -27,7 +27,7 @@ class PesanController extends Controller
 
     public function toadmin(Request $request)
     {
-        $pesan = new Pesan();
+        $pesan = new Pesan(); 
 
         $pesan->user_id = auth()->user()->id;
         $pesan->penerima = 'Admin';

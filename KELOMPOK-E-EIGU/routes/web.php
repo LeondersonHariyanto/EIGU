@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\IntegrationController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\KoneksiController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\LoginController;
@@ -9,6 +11,7 @@ use App\Http\Controllers\NetworkController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\PostinganController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SignUpController;
@@ -33,7 +36,8 @@ Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/', [LandingpageController::class, 'index'])->middleware('auth');
-Route::get('/postingan/detail', [LandingpageController::class, 'detail'])->middleware('auth');
+Route::post('/posting', [PostinganController::class, 'posting'])->middleware('auth');
+Route::get('/postingan/detail/{id}', [LandingpageController::class, 'detail'])->middleware('auth');
 
 
 Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
@@ -68,4 +72,13 @@ Route::post('/integration/github', [IntegrationController::class, 'github'])->mi
 Route::get('/integration/github/uncheck', [IntegrationController::class, 'githubuncheck'])->middleware('auth');
 
 Route::get('/settings/privacy',[SettingsController::class, 'privacy'])->middleware('auth');
+Route::post('/settings/email',[SettingsController::class, 'email'])->middleware('auth');
+Route::post('/settings/phone',[SettingsController::class, 'nohp'])->middleware('auth');
+Route::post('/settings/password',[SettingsController::class, 'password'])->middleware('auth');
 Route::get('/settings/security',[SettingsController::class, 'security'])->middleware('auth');
+Route::post('/settings/privasi',[SettingsController::class, 'privasi'])->middleware('auth');
+Route::post('/settings/publik',[SettingsController::class, 'publik'])->middleware('auth');
+Route::post('/settings/2ndpassword',[SettingsController::class, 'password2nd'])->middleware('auth');
+
+Route::get('/dashboard',[AdminController::class, 'jobs'])->middleware('auth');
+Route::post('/dashboard/job/add',[JobController::class, 'addjobs'])->middleware('auth');
