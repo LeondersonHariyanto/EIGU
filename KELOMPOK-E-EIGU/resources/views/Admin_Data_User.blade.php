@@ -26,9 +26,12 @@
                         <a href="/dashboard/job" class="text-decoration-none text-dark">
                             <div class="border p-3 round posting-btn mb-3"><i class="bi bi-briefcase"></i> Jobs</div>
                         </a>
+<<<<<<< HEAD
                         <a href="/dashboard/chat" class="text-decoration-none text-dark">
                             <div class="border p-3 round posting-btn mb-3"><i class="bi bi-chat-dots"></i> Chat</div>
                         </a>
+=======
+>>>>>>> f5be0bf79a4c23358ea4313deeb7c2c9de3c9651
                     </div>
                 </div>
 

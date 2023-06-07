@@ -85,6 +85,7 @@ Route::post('/settings/enable-notif',[SettingsController::class, 'enable_notif']
 Route::post('/settings/disable-notif',[SettingsController::class, 'disable_notif'])->middleware('auth');
 
 
+<<<<<<< HEAD
 Route::get('/dashboard/job',[AdminController::class, 'jobs'])->middleware('auth');
 Route::get('/dashboard/user',[AdminController::class, 'user'])->middleware('auth');
 Route::get('/dashboard/user/delete/{id}',[AdminController::class, 'delete_user'])->middleware('auth');
@@ -94,5 +95,10 @@ Route::get('/dashboard/chat',[AdminController::class, 'chat'])->middleware('auth
 Route::get('/dashboard/chat/{id}',[AdminController::class, 'chat_detail'])->middleware('auth');
 Route::post('/admin/reply/{id}',[PesanController::class, 'fromadmin'])->middleware('auth');
 
+=======
+Route::get('/dashboard',[AdminController::class, 'jobs'])->middleware('auth');
+Route::post('/dashboard/job/add',[JobController::class, 'addjobs'])->middleware('auth');
+
+>>>>>>> f5be0bf79a4c23358ea4313deeb7c2c9de3c9651
 Route::get('/search',[SearchController::class, 'index'])->middleware('auth');
 Route::get('/filter',[SearchController::class, 'filter'])->middleware('auth');
