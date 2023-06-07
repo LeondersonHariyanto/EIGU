@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Integration;
-use App\Models\Notifikasi;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,8 +11,7 @@ class ProfileController extends Controller
     public function index()
     {
         $integration = Integration::where('user_id','=',auth()->user()->id)->first();
-        $notif = Notifikasi::where('user_id','=',auth()->user()->id)->latest();
-        return view('Profile', compact('integration','notif'));
+        return view('Profile', compact('integration'));
     }
 
     public function update(Request $request)

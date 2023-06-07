@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Experience;
-use App\Models\Notifikasi;
 use Illuminate\Http\Request;
 
 class ExperienceController extends Controller
@@ -11,8 +10,7 @@ class ExperienceController extends Controller
     public function index()
     {
         $experience = Experience::where('user_id','=',auth()->user()->id)->get();
-        $notif = Notifikasi::where('user_id','=',auth()->user()->id)->latest();
-        return view('Experience', compact('experience','notif'));
+        return view('Experience', compact('experience'));
     }
 
     public function addjobs(Request $request)

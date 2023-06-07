@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Notifikasi;
 use App\Models\Portofolio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -12,8 +11,7 @@ class PortofolioController extends Controller
     public function index()
     {
         $portofolio = Portofolio::where('user_id','=', auth()->user()->id)->get();
-        $notif = Notifikasi::where('user_id','=',auth()->user()->id)->latest();
-        return view('Portofolio', compact('portofolio','notif'));
+        return view('Portofolio', compact('portofolio'));
     }
 
     public function portofolio(Request $request)
@@ -24,7 +22,7 @@ class PortofolioController extends Controller
 
         $porto = new Portofolio();
 
-        $path = public_path() . '/upload/portofolio/';
+        $path = public_path() . '/upload/portofolio/' . auth()->user()->nama;
         File::makeDirectory($path, $mode = 0777, true, true);
 
         $foto = $request->foto->getClientOriginalName() . '-' . time() . '- Portofolio -'

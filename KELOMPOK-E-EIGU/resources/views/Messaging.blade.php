@@ -49,10 +49,8 @@
                                             placeholder="Cari User" list="User">
                                         <datalist id="User">
                                             @foreach ($user as $users)
-                                                @if ($users->role != 'Admin')
-                                                    <option value="{{ $users->email }}">
-                                                        {{ $users->firstname . ' ' . $users->lastname }}</option>
-                                                @endif
+                                                <option value="{{ $users->email }}">
+                                                    {{ $users->firstname . ' ' . $users->lastname }}</option>
                                             @endforeach
                                         </datalist>
 
@@ -61,7 +59,7 @@
                                 </form>
                             </div>
                             <h6 class="fw-bold">Connection</h6>
-                            <a href="/messaging/admin" class="text-decoration-none text-dark">
+                            <a href="#" class="text-decoration-none text-dark">
                                 <div class="row">
                                     <div class="col-md-3">
                                         <img src="{{ asset('src/img/mail.png') }}" alt="" class="icon">
@@ -93,28 +91,26 @@
                                         @endif
                                     @endforeach
                                 @endif
-
-                                @if ($connect->user_id_1 != auth()->user()->id)
-                                    @foreach ($user as $users)
-                                        @if ($users->id == $connect->user_id_1)
-                                            <a href="/messaging/user/{{ $users->id }}"
-                                                class="text-decoration-none text-dark">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <img src="{{ asset('src/img/contoh.jpg') }}" alt=""
-                                                            class="chat-icon">
-                                                    </div>
-                                                    <div class="col">
-                                                        <b
-                                                            class="fw-bold">{{ $users->firstname . ' ' . $users->lastname }}</b>
-                                                        <p>Developer</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        @endif
-                                    @endforeach
-                                @endif
                             @endforeach
+                            @if ($connect->user_id_1 != auth()->user()->id)
+                                @foreach ($user as $users)
+                                    @if ($users->id == $connect->user_id_1)
+                                        <a href="/messaging/user/{{ $users->id }}"
+                                            class="text-decoration-none text-dark">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <img src="{{ asset('src/img/contoh.jpg') }}" alt=""
+                                                        class="chat-icon">
+                                                </div>
+                                                <div class="col">
+                                                    <b class="fw-bold">{{ $users->firstname . ' ' . $users->lastname }}</b>
+                                                    <p>Developer</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                         <div class="col">
                             @if (Request::is('messaging/admin'))
@@ -183,23 +179,22 @@
                             @if (Request::is('messaging/user*'))
                                 <div class="chat-box p-4 overflow-auto">
                                     @foreach ($pesan as $data_pesan)
-                                    @if ($data_pesan->pengirim_id == $id)
-                                            @foreach ($user as $users)
-                                                @if ($users->id == $data_pesan->pengirim_id)
-                                                <div class="row mb-2">
-                                                    <div class="col-md-1">
-                                                        <img src="{{ asset('src/img/contoh.jpg') }}" alt=""
-                                                            width="40" class="chat-icon">
-                                                    </div>
-                                                    <div class="col">
-                                                        <h6 class="fw-bold">{{ $users->firstname.' '.$users->lastname }}</h6>
-                                                        <p class="text-sm">{{ $data_pesan->isi }}</p>
-                                                    </div>
-                                                </div>
-                                                @endif
-                                            @endforeach
-                                        @elseif ($data_pesan->pengirim_id == auth()->user()->id)
+                                        @if ($data_pesan->penerima == 'User')
                                             <div class="row mb-2">
+                                                <div class="col-md-1">
+                                                    <img src="{{ asset('src/img/mail.png') }}" alt=""
+                                                        width="40">
+                                                </div>
+                                                <div class="col">
+                                                    <h6 class="fw-bold">For Help</h6>
+                                                    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                                        elit.
+                                                        Dignissimos, obcaecati.</p>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        @if ($data_pesan->penerima == 'Admin')
+                                            <div class="row">
                                                 <div class="col text-end">
                                                     <h6 class="fw-bold">
                                                         {{ auth()->user()->firstname . ' ' . auth()->user()->lastname }}

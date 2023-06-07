@@ -17,13 +17,9 @@ return new class extends Migration
             $table->string('lastname')->nullable();
             $table->string('email')->unique();
             $table->string('password')->nullable();
-            $table->string('password2nd')->nullable();
-            $table->string('nohp')->nullable();
             $table->string('motto')->nullable();
             $table->string('region')->nullable();
             $table->string('city')->nullable();
-            $table->string('privasi')->default('False');
-            $table->string('role')->default('User');
             $table->rememberToken();
             $table->timestamps();
         });
