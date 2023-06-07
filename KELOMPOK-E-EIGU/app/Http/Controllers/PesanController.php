@@ -48,6 +48,31 @@ class PesanController extends Controller
         return back();
     }
 
+    public function fromadmin(Request $request,$id)
+    {
+        $pesan = new Pesan();
+
+        $pesan->pengirim_id = $id;
+        $pesan->penerima_id = $id;
+        $pesan->penerima = 'Admin';
+        $pesan->isi = $request->chat;
+
+        $pesan->save();
+
+        $user = User::find($id);
+
+        if ($user->notifikasi == 'True') {
+            $log = new Notifikasi();
+
+            $log->user_id = $id;
+            $log->pesan = 'Admin Mengirimi Anda Pesan';
+            $log->link = '/messaging/admin';
+            $log->save();
+        }
+
+        return back();
+    }
+
     public function touser(Request $request, $id)
     {
 
