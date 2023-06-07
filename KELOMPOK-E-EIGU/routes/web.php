@@ -13,6 +13,7 @@ use App\Http\Controllers\PesanController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\PostinganController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SignUpController;
 use Illuminate\Support\Facades\Route;
@@ -78,7 +79,16 @@ Route::post('/settings/password',[SettingsController::class, 'password'])->middl
 Route::get('/settings/security',[SettingsController::class, 'security'])->middleware('auth');
 Route::post('/settings/privasi',[SettingsController::class, 'privasi'])->middleware('auth');
 Route::post('/settings/publik',[SettingsController::class, 'publik'])->middleware('auth');
-Route::post('/settings/2ndpassword',[SettingsController::class, 'password2nd'])->middleware('auth');
+Route::post('/settings/2ndpassword',[SettingsController::class, 'password2nd    '])->middleware('auth');
+Route::get('/settings/notification',[SettingsController::class, 'notification'])->middleware('auth');
+Route::post('/settings/enable-notif',[SettingsController::class, 'enable_notif'])->middleware('auth');
+Route::post('/settings/disable-notif',[SettingsController::class, 'disable_notif'])->middleware('auth');
 
-Route::get('/dashboard',[AdminController::class, 'jobs'])->middleware('auth');
+
+Route::get('/dashboard/job',[AdminController::class, 'jobs'])->middleware('auth');
+Route::get('/dashboard/user',[AdminController::class, 'user'])->middleware('auth');
+Route::get('/dashboard/user/delete/{id}',[AdminController::class, 'delete_user'])->middleware('auth');
 Route::post('/dashboard/job/add',[JobController::class, 'addjobs'])->middleware('auth');
+
+Route::get('/search',[SearchController::class, 'index'])->middleware('auth');
+Route::get('/filter',[SearchController::class, 'filter'])->middleware('auth');

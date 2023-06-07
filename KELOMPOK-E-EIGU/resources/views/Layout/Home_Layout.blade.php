@@ -27,7 +27,6 @@
 </head>
 
 <body>
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-abu sticky-top">
         <div class="container">
@@ -40,46 +39,60 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex">
+                <form action="/search" class="d-flex">
                     <div class="input-group">
-                        <input type="text" class="form-control round" aria-label="Search">
+                        <input type="text" name="search" class="form-control round" aria-label="Search" value="{{ request('search') }}">
                         <span class="input-group-text round">
-                            <a href="#!" class="text-decoration-none nav-link navbar-link text-dark">
+                            <button type="submit" class="btn text-decoration-none nav-link navbar-link text-dark">
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                            </a>
+                            </button>
                         </span>
                     </div>
                 </form>
                 @if (Request::is('dashboard*'))
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                </ul>
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    </ul>
                 @else
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item px-3 text-center">
-                        <a class="navbar-link {{ Request::is('/') ? 'active' : '' }}" aria-current="page"
-                            href="/">
-                            <i class="fs-5 bi bi-house"></i><br>Home
-                        </a>
-                    </li>
-                    <li class="nav-item px-3 text-center">
-                        <a class="navbar-link {{ Request::is('network*') ? 'active' : '' }}"" aria-current="page"
-                            href="/network">
-                            <i class="fs-5 bi bi-people"></i><br>Network
-                        </a>
-                    </li>
-                    <li class="nav-item px-3 text-center">
-                        <a class="navbar-link {{ Request::is('pekerjaan*') ? 'active' : '' }}"" aria-current="page"
-                            href="/pekerjaan">
-                            <i class="fs-5 bi bi-bag"></i><br>Job
-                        </a>
-                    </li>
-                    <li class="nav-item px-3 text-center">
-                        <a class="navbar-link {{ Request::is('messaging*') ? 'active' : '' }}"" aria-current="page"
-                            href="/messaging/admin">
-                            <i class="fs-5 bi bi-send"></i><br>Messaging
-                        </a>
-                    </li>
-                </ul>
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item px-3 text-center">
+                            <a class="navbar-link {{ Request::is('/') ? 'active' : '' }}" aria-current="page"
+                                href="/">
+                                <i class="fs-5 bi bi-house"></i><br>Home
+                            </a>
+                        </li>
+                        <li class="nav-item px-3 text-center">
+                            <a class="navbar-link {{ Request::is('network*') ? 'active' : '' }}"" aria-current="page"
+                                href="/network">
+                                <i class="fs-5 bi bi-people"></i><br>Network
+                            </a>
+                        </li>
+                        <li class="nav-item px-3 text-center">
+                            <a class="navbar-link {{ Request::is('pekerjaan*') ? 'active' : '' }}"" aria-current="page"
+                                href="/pekerjaan">
+                                <i class="fs-5 bi bi-bag"></i><br>Job
+                            </a>
+                        </li>
+                        <li class="nav-item px-3 text-center">
+                            <a class="navbar-link {{ Request::is('messaging*') ? 'active' : '' }}"" aria-current="page"
+                                href="/messaging/admin">
+                                <i class="fs-5 bi bi-send"></i><br>Messaging
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="dropdown mx-3">
+                        <i class="fs-4 bi bi-bell-fill text-primary" data-bs-toggle="dropdown" data-bs-display="static"
+                            aria-expanded="false"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-lg-end">
+                            @if (count($notif) == 0)
+                                <li>Tidak ada notifikasi</li>
+                            @endif
+                            @foreach ($notif as $notifikasi)
+                                <li><a href="{{ $notifikasi->link }}" class="dropdown-item">{{ $notifikasi->pesan }}</a></li>
+                                <li><hr></li>
+                            @endforeach
+                        </ul>
+                    </div>
                 @endif
                 <div class="dropdown">
                     <button type="button" class="btn round navbar-link-setting" data-bs-toggle="dropdown"

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notifikasi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -10,7 +11,8 @@ class SettingsController extends Controller
 {
     public function privacy()
     {
-        return view('Settings_Privacy');
+        $notif = Notifikasi::where('user_id','=',auth()->user()->id)->latest()->get();
+        return view('Settings_Privacy',compact('notif'));
     }
 
     public function email(Request $request)
@@ -53,7 +55,8 @@ class SettingsController extends Controller
 
     public function security()
     {
-        return view('Settings_Security');
+        $notif = Notifikasi::where('user_id','=',auth()->user()->id)->latest()->get();
+        return view('Settings_Security',compact('notif'));
     }
 
     public function privasi()
@@ -81,6 +84,33 @@ class SettingsController extends Controller
         $user = User::find(auth()->user()->id);
 
         $user->password2nd = $request->password2nd;
+        $user->save();
+
+        return back();
+    }
+
+    public function notification()
+    {
+        $notif = Notifikasi::where('user_id','=',auth()->user()->id)->latest()->get();
+
+        return view('Settings_Notification',compact('notif'));
+    }
+
+    public function enable_notif()
+    {
+        $user = User::find(auth()->user()->id);
+
+        $user->notifikasi = 'True';
+        $user->save();
+
+        return back();
+    }
+
+    public function Disable_notif()
+    {
+        $user = User::find(auth()->user()->id);
+
+        $user->notifikasi = 'False';
         $user->save();
 
         return back();
