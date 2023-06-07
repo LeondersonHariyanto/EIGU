@@ -11,7 +11,7 @@ class SettingsController extends Controller
 {
     public function privacy()
     {
-        $notif = Notifikasi::where('user_id','=',auth()->user()->id)->where('read','=','False')->latest()->get();
+        $notif = Notifikasi::where('user_id','=',auth()->user()->id)->latest()->get();
         return view('Settings_Privacy',compact('notif'));
     }
 
@@ -55,8 +55,7 @@ class SettingsController extends Controller
 
     public function security()
     {
-        $notif = Notifikasi::where('user_id','=',auth()->user()->id)->where('read','=','False')->latest()->get();
-        return view('Settings_Security',compact('notif'));
+        return view('Settings_Security');
     }
 
     public function privasi()
@@ -84,33 +83,6 @@ class SettingsController extends Controller
         $user = User::find(auth()->user()->id);
 
         $user->password2nd = $request->password2nd;
-        $user->save();
-
-        return back();
-    }
-
-    public function notification()
-    {
-        $notif = Notifikasi::where('user_id','=',auth()->user()->id)->where('read','=','False')->latest()->get();
-
-        return view('Settings_Notification',compact('notif'));
-    }
-
-    public function enable_notif()
-    {
-        $user = User::find(auth()->user()->id);
-
-        $user->notifikasi = 'True';
-        $user->save();
-
-        return back();
-    }
-
-    public function Disable_notif()
-    {
-        $user = User::find(auth()->user()->id);
-
-        $user->notifikasi = 'False';
         $user->save();
 
         return back();
