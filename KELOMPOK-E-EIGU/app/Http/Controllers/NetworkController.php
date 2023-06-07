@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Notifikasi;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,14 +10,12 @@ class NetworkController extends Controller
     public function index()
     {
         $user = User::where('id','!=',auth()->user()->id)->get();
-        $notif = Notifikasi::where('user_id','=',auth()->user()->id)->latest();
-        return view('Network', compact('user','notif'));
+        return view('Network', compact('user'));
     }
 
     public function detail($id)
     {
         $user = User::find($id);
-        $notif = Notifikasi::where('user_id','=',auth()->user()->id)->latest();
-        return view('Detail_Profile', compact('user','notif'));
+        return view('Detail_Profile', compact('user'));
     }
 }

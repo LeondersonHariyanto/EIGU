@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
 
+
     <title>EIGU</title>
 </head>
 
@@ -49,6 +50,10 @@
                         </span>
                     </div>
                 </form>
+                @if (Request::is('dashboard*'))
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                </ul>
+                @else
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item px-3 text-center">
                         <a class="navbar-link {{ Request::is('/') ? 'active' : '' }}" aria-current="page"
@@ -58,7 +63,7 @@
                     </li>
                     <li class="nav-item px-3 text-center">
                         <a class="navbar-link {{ Request::is('network*') ? 'active' : '' }}"" aria-current="page"
-                            href="#">
+                            href="/network">
                             <i class="fs-5 bi bi-people"></i><br>Network
                         </a>
                     </li>
@@ -75,6 +80,7 @@
                         </a>
                     </li>
                 </ul>
+                @endif
                 <div class="dropdown">
                     <button type="button" class="btn round navbar-link-setting" data-bs-toggle="dropdown"
                         data-bs-display="static" aria-expanded="false">
@@ -91,15 +97,17 @@
 
     @yield('konten')
 
-    <nav class="navbar fixed-bottom">
+    {{-- <nav class="navbar fixed-bottom">
         <div class="w-100 text-end m-5 p-5">
-            <img src="{{ asset('src/img/bell.png') }}" alt="" width="100">
+            <img src="{{ asset('src/img/bell.png') }}" alt="" width="20">
         </div>
-    </nav>
+    </nav> --}}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+
+
 </body>
 
 </html>
